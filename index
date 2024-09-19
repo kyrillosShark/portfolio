@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kyrillos Sharkawy | UX/UI Portfolio</title>
+    <meta name="description" content="Kyrillos Sharkawy's UX/UI Portfolio showcasing current and additional projects.">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- AOS Library for Scroll Animations -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- CSS Styling -->
+    <style>
+        /* Basic Reset */
+        *, *::before, *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Variables */
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #a29bfe;
+            --background-color: #f9f9f9;
+            --text-color: #2d3436;
+            --light-text-color: #636e72;
+            --nav-background: rgba(255, 255, 255, 0.95);
+            --card-background: #ffffff;
+            --gradient-bg: linear-gradient(135deg, #6c5ce7, #a29bfe);
+            --shadow-light: 0 10px 30px rgba(0, 0, 0, 0.1);
+            --border-radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        /* Scroll Behavior */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            line-height: 1.6;
+        }
+
+        /* Navigation Menu */
+        nav {
+            background-color: var(--nav-background);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: var(--transition);
+            padding: 20px 0;
+        }
+
+        nav.scrolled {
+            box-shadow: var(--shadow-light);
+            padding: 15px 0;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+        }
+
+        nav ul li {
+            margin-left: 30px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: 500;
+            font-size: 1em;
+            position: relative;
+            transition: var(--transition);
+        }
+
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--primary-color);
+            transition: var(--transition);
+        }
+
+        nav ul li a:hover::after,
+        nav ul li a.active::after {
+            width: 100%;
+        }
+
+        /* Header Section */
+        header {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            background-image: url('your-high-quality-image.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            overflow: hidden;
+            animation: fadeIn 1.5s ease-in-out;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+            color: #ffffff;
+            animation: fadeInUp 1s forwards;
+        }
+
+        header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4.5em;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+
+        header h2 {
+            font-weight: 300;
+            font-size: 1.8em;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s forwards 0.8s;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            color: #ffffff;
+            font-size: 2em;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-20px);
+            }
+            60% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* Section Styling */
+        section {
+            padding: 100px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        section h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        section h3::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        /* Skills Section */
+        .skills {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .skill {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow-light);
+            transition: var(--transition);
+        }
+
+        .skill:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+        }
+
+        .skill h4 {
+            font-size: 1.2em;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .progress-bar {
+            background-color: #e0e0e0;
+            border-radius: 10px;
+            overflow: hidden;
+            height: 8px;
+        }
+
+        .progress {
+            height: 100%;
+            background-image: var(--gradient-bg);
+            width: 0;
+            transition: width 1.5s ease-in-out;
+        }
+
+        /* Projects Section */
+        .projects {
+            padding: 100px 20px;
+            background-color: var(--background-color);
+        }
+
+        .projects h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            margin-bottom: 50px;
+            text-align: center;
+            position: relative;
+        }
+
+        .projects h3::after {
+            content: '';
+            width: 60px;
+            height: 3px;
+            background-color: var(--primary-color);
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr)); /* Increased min width */
+            gap: 30px;
+        }
+
+        .project {
+            position: relative;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow-light);
+            transition: transform 0.3s ease;
+            height: 0;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+        }
+
+        .project:hover {
+            transform: scale(1.05);
+        }
+
+        .project iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            transition: transform 0.3s ease;
+        }
+
+        .project:hover iframe {
+            transform: scale(1.05);
+        }
+
+        .project-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(108, 92, 231, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            padding: 20px;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+        .project:hover .project-overlay {
+            opacity: 1;
+        }
+
+        .project-title {
+            color: #ffffff;
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .project-description {
+            color: #ffffff;
+            font-size: 1em;
+            max-width: 80%;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .project:hover .project-title,
+        .project:hover .project-description {
+            transform: translateY(0);
+        }
+
+        /* Fullscreen View Button */
+        .view-fullscreen {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            background-color: var(--secondary-color);
+            color: #ffffff;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: background-color var(--transition);
+        }
+
+        .view-fullscreen:hover {
+            background-color: var(--primary-color);
+        }
+
+        /* Additional Projects List */
+        .additional-projects {
+            margin-top: 60px;
+        }
+
+        .additional-projects h4 {
+            font-size: 1.8em;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .additional-projects ul {
+            list-style-type: disc;
+            padding-left: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .additional-projects li {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: var(--light-text-color);
+            line-height: 1.5;
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+        }
+
+        .contact-info {
+            flex: 1;
+            padding-right: 50px;
+        }
+
+        .contact-info p {
+            margin-bottom: 20px;
+            font-size: 1.1em;
+            color: var(--light-text-color);
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 20px;
+            animation: fadeInUp 1s forwards;
+        }
+
+        .contact-links a {
+            color: var(--primary-color);
+            font-size: 1.5em;
+            transition: var(--transition);
+        }
+
+        .contact-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        .contact-form {
+            flex: 1;
+            background: var(--card-background);
+            padding: 40px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-light);
+        }
+
+        .contact-form input,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 20px;
+            border: 1px solid #e0e0e0;
+            border-radius: var(--border-radius);
+            font-size: 1em;
+            transition: var(--transition);
+        }
+
+        .contact-form input:focus,
+        .contact-form textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+        }
+
+        .contact-form button {
+            padding: 12px 30px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 25px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: var(--transition);
+            animation: fadeInUp 1.5s ease-in-out;
+        }
+
+        .contact-form button:hover {
+            background-color: var(--secondary-color);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background-color: var(--text-color);
+            color: #ffffff;
+        }
+
+        /* Responsive Adjustments */
+        @media (min-width: 1200px) {
+            .project-grid {
+                grid-template-columns: repeat(auto-fit, minmax(600px, 1fr)); /* Further increase min width */
+            }
+        }
+
+        @media (max-width: 1200px) and (min-width: 992px) {
+            .project-grid {
+                grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); /* Adjust min width for medium screens */
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr; /* Single column on small screens */
+            }
+            
+            .project {
+                padding-bottom: 56.25%; /* Maintain aspect ratio */
+            }
+            
+            .additional-projects ul {
+                padding-left: 20px;
+            }
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--primary-color);
+            color: #ffffff;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            font-size: 1.5em;
+            cursor: pointer;
+            transition: var(--transition);
+            z-index: 1000;
+            animation: bounceIn 0.5s ease-in-out;
+        }
+
+        .dark-mode-toggle:hover {
+            background-color: var(--secondary-color);
+        }
+
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.8);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.05);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Modal Styling */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 2000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: hidden; /* Disable scroll */
+            background-color: rgba(0,0,0,0.8); /* Black w/ opacity */
+            justify-content: center;
+            align-items: center;
+            animation: fadeInModal 0.5s;
+        }
+
+        .modal iframe {
+            width: 90%;
+            height: 90%;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .modal .close {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #ffffff;
+            font-size: 40px;
+            font-weight: bold;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .modal .close:hover,
+        .modal .close:focus {
+            color: var(--secondary-color);
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @keyframes fadeInModal {
+            from {opacity: 0;}
+            to {opacity: 1;}
+        }
+
+        /* Dark Mode Styles */
+        body.dark-mode {
+            --background-color: #1a1a2e;
+            --text-color: #ffffff;
+            --light-text-color: #a0a0a0;
+            --nav-background: rgba(26, 26, 46, 0.95);
+            --card-background: #16213e;
+        }
+
+        body.dark-mode .skill {
+            background-color: #16213e;
+        }
+
+        body.dark-mode .project-overlay {
+            background: rgba(26, 26, 46, 0.9);
+        }
+
+        body.dark-mode .contact-form {
+            background-color: #16213e;
+        }
+
+        body.dark-mode .contact-form input,
+        body.dark-mode .contact-form textarea {
+            background-color: #1a1a2e;
+            border-color: #2a2a4e;
+            color: #ffffff;
+        }
+
+        body.dark-mode .additional-projects ul {
+            list-style-type: disc;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Menu -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <div class="logo">KS</div>
+            <ul>
+                <li><a href="#about" class="nav-link">About</a></li>
+                <li><a href="#skills" class="nav-link">Skills</a></li>
+                <li><a href="#projects" class="nav-link">Projects</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header>
+        <div class="header-content">
+            <h1>Kyrillos Sharkawy</h1>
+            <h2>UX/UI Designer & Creative Thinker</h2>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" data-aos="fade-up">
+        <h3>About Me</h3>
+        <div class="about-content">
+            <div class="about-text">
+                <p>Welcome to my portfolio! I'm a passionate UX/UI designer with a keen eye for creating intuitive and visually appealing digital experiences. My approach combines user-centric design principles with innovative problem-solving to craft solutions that not only look great but also drive results.</p>
+                <p>With a background in both design and front-end development, I bring a unique perspective to every project, ensuring that aesthetics and functionality work hand in hand to deliver exceptional user experiences.</p>
+            </div>
+            <div class="about-image">
+                <img src="your-profile-image.jpg" alt="Kyrillos Sharkawy" class="profile-image">
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" data-aos="fade-up">
+        <h3>My Skills</h3>
+        <div class="skills">
+            <div class="skill" data-aos="zoom-in" data-aos-delay="100">
+                <h4>UI Design</h4>
+                <div class="progress-bar">
+                    <div class="progress" data-value="90%"></div>
+                </div>
+            </div>
+            <div class="skill" data-aos="zoom-in" data-aos-delay="200">
+                <h4>UX Research</h4>
+                <div class="progress-bar">
+                    <div class="progress" data-value="85%"></div>
+                </div>
+            </div>
+            <div class="skill" data-aos="zoom-in" data-aos-delay="300">
+                <h4>Prototyping</h4>
+                <div class="progress-bar">
+                    <div class="progress" data-value="80%"></div>
+                </div>
+            </div>
+            <div class="skill" data-aos="zoom-in" data-aos-delay="400">
+                <h4>Front-end Development</h4>
+                <div class="progress-bar">
+                    <div class="progress" data-value="75%"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" data-aos="fade-up">
+        <h3>Current Projects</h3>
+        <div class="project-grid">
+            <!-- Project 1 -->
+            <div class="project" data-modal="modal1">
+                <iframe src="https://www.ophnm.com" allowfullscreen loading="lazy"></iframe>
+                <div class="project-overlay">
+                    <h3 class="project-title">Ophnm</h3>
+                    <p class="project-description">This is my company's website. We are a small company out of Nashville, Tennessee, specializing in providing software solutions for commercial purposes.</p>
+                    <a href="#" class="view-fullscreen">View Fullscreen</a>
+                </div>
+            </div>
+            <!-- Project 2 -->
+            <div class="project" data-modal="modal2">
+                <iframe src="https://kyrillosshark.github.io/12thandpine" allowfullscreen loading="lazy"></iframe>
+                <div class="project-overlay">
+                    <h3 class="project-title">12th and Pine</h3>
+                    <p class="project-description">A website designed for a Nasvhillian liquor store chain. The website expressively shows their inventory.</p>
+                    <a href="#" class="view-fullscreen">View Fullscreen</a>
+                </div>
+            </div>
+            <!-- Project 3 -->
+            <div class="project" data-modal="modal3">
+                <iframe src="https://kyrillosshark.github.io/armanicarcollection" allowfullscreen loading="lazy"></iframe>
+                <div class="project-overlay">
+                    <h3 class="project-title">Armani's Car Collection</h3>
+                    <p class="project-description">A client recently connected with me over creating a website for his car collection. The project is no where near done, but I am happy with it's aesthetics.</p>
+                    <a href="#" class="view-fullscreen">View Fullscreen</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Additional Projects List -->
+        <div class="additional-projects">
+            <h4>Additional Projects</h4>
+            <ul>
+                <li><strong>EllisEye:</strong>Built an Artificial Intelligence model to detect drownings. Facilitated the applications full development. The software is currently in the beta stage but will be used in Disney, Six Flags, and other Marriott locations</li>
+                <li><strong>Singo:</strong> Developed an iOS application for a company named Singo. The application allowed Singo game hosts to play the game with large audiences</li>
+                <li><strong>MapMyDegree:</strong> Created a full-scale web application that allowed users to select their college of choice through many customizable features including: grades, location, ACT/SAT requirements and more, in less than 36 hours. The web app was rewarded Hackers Choice at the annual HackMT Hackathon!</li>
+                <!-- Add more list items as needed -->
+            </ul>
+        </div>
+    </section>
+
+    <!-- Modals for Projects -->
+    <!-- Modal 1 -->
+    <div id="modal1" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal1-title">
+        <span class="close" aria-label="Close Modal">&times;</span>
+        <iframe src="https://www.ophnm.com" allowfullscreen></iframe>
+    </div>
+
+    <!-- Modal 2 -->
+    <div id="modal2" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal2-title">
+        <span class="close" aria-label="Close Modal">&times;</span>
+        <iframe src="https://kyrillosshark.github.io/12thandpine" allowfullscreen></iframe>
+    </div>
+
+    <!-- Modal 3 -->
+    <div id="modal3" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal3-title">
+        <span class="close" aria-label="Close Modal">&times;</span>
+        <iframe src="https://kyrillosshark.github.io/armanicarcollection/" allowfullscreen></iframe>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact" data-aos="fade-up">
+        <h3>Get in Touch</h3>
+        <div class="contact-container">
+            <div class="contact-info">
+                <p>I'm always open to new opportunities and exciting projects. Whether you have a question or just want to say hi, I'll try my best to get back to you!</p>
+                <div class="contact-links">
+                    <a href="" title="Email"><i class="fas fa-envelope"></i></a>
+                    <a href="https://linkedin.com/in/KYRILLOS-sharkawy" target="_blank" title="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/kyrillosshark" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+                    <a href="https://dribbble.com/yourusername" target="_blank" title="Dribbble"><i class="fab fa-dribbble"></i></a>
+                </div>
+            </div>
+            <form class="contact-form" data-aos="zoom-in">
+                <input type="text" name="name" placeholder="Your Name" required>
+                <input type="email" name="email" placeholder="Your Email" required>
+                <textarea name="message" rows="5" placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Kyrillos. All rights reserved.</p>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+    </button>
+
+    <!-- AOS Library for Scroll Animations -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- Main JavaScript -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Initialize AOS
+            AOS.init({
+                duration: 1000,
+                once: true,
+            });
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) {
+                    navbar.classList.add('scrolled');
+                } else {
+                    navbar.classList.remove('scrolled');
+                }
+            });
+
+            // Smooth scroll for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+
+            // Animate skill bars
+            const skillBars = document.querySelectorAll('.progress');
+            const animateSkillBars = () => {
+                skillBars.forEach(bar => {
+                    const value = bar.dataset.value;
+                    bar.style.width = value;
+                });
+            };
+
+            // Trigger skill bar animation when the skills section is in view
+            const skillsSection = document.getElementById('skills');
+            const observer = new IntersectionObserver((entries) => {
+                if (entries[0].isIntersecting) {
+                    animateSkillBars();
+                    observer.unobserve(skillsSection);
+                }
+            });
+            observer.observe(skillsSection);
+
+            // Dark mode toggle
+            const darkModeToggle = document.getElementById('darkModeToggle');
+            const body = document.body;
+
+            darkModeToggle.addEventListener('click', () => {
+                body.classList.toggle('dark-mode');
+                const isDarkMode = body.classList.contains('dark-mode');
+                darkModeToggle.innerHTML = isDarkMode ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+                localStorage.setItem('darkMode', isDarkMode);
+            });
+
+            // Check for saved dark mode preference
+            if (localStorage.getItem('darkMode') === 'true') {
+                body.classList.add('dark-mode');
+                darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+            }
+
+            // Modal Functionality
+            const projects = document.querySelectorAll('.project');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.modal .close');
+
+            projects.forEach(project => {
+                project.addEventListener('click', (e) => {
+                    // Prevent modal from opening when 'View Fullscreen' link is clicked
+                    if(e.target.classList.contains('view-fullscreen')) {
+                        e.stopPropagation();
+                        const projectIndex = Array.from(project.parentElement.children).indexOf(project) + 1;
+                        const modalId = 'modal' + projectIndex;
+                        const modal = document.getElementById(modalId);
+                        if(modal){
+                            modal.style.display = 'flex';
+                        }
+                        return;
+                    }
+                    const modalId = project.getAttribute('data-modal');
+                    const modal = document.getElementById(modalId);
+                    if(modal){
+                        modal.style.display = 'flex';
+                    }
+                });
+            });
+
+            closeButtons.forEach(button => {
+                button.addEventListener('click', () => {
+                    const modal = button.parentElement;
+                    modal.style.display = 'none';
+                });
+            });
+
+            // Close modal when clicking outside the iframe
+            modals.forEach(modal => {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) {
+                        modal.style.display = 'none';
+                    }
+                });
+            });
+
+            // Close modal on Esc key press
+            window.addEventListener('keydown', (e) => {
+                if(e.key === 'Escape'){
+                    modals.forEach(modal => {
+                        modal.style.display = 'none';
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
